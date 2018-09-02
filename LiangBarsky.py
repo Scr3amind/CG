@@ -6,21 +6,25 @@ verticeSup = []
 #Función de el algoritmo de LiangBarsky Visto en clase
 #modo == True -> Limites horizontales
 #modo = False -> Limites Verticales
-def LiangBarsky(pRef,pxInf,pyInf,pxSup,pySup,modo): 
+#vertices[0] = pxInf
+#vertices[1] = pyInf
+#vertices[2] = pxSup
+#vertices[3] = pySup
+def LiangBarsky(pRef,vertices,modo): 
     u = 0
     if (modo == True):
-        u = (pRef - pxInf) / (pxSup - pxInf)
+        u = (pRef - vertices[0]) / (vertices[2] - vertices[0])
         if (u < 0 or u > 1):
             return False
-        y = pyInf + u * (pySup - pyInf)
+        y = vertices[1] + u * (vertices[3] - vertices[1])
         punto = [pRef , y]
         return punto
     
     elif (modo == False):
-        u = (pRef - pyInf) / (pySup - pyInf)
+        u = (pRef - vertices[1]) / (vertices[3] - vertices[1])
         if (u < 0 or u > 1):
             return False
-        x = pxInf + u * (pxSup - pxInf)
+        x = vertices[0] + u * (vertices[2] - vertices[0])
         punto = [x , pRef]
         return punto
 
@@ -73,9 +77,9 @@ for linea_s in archivo_leido:
     lineas.append(list(map(int,linea_i)))
 
 for linea in lineas:
-    print(LiangBarsky(verticeInf[0],linea[0],linea[1],linea[2],linea[3],True))
-    print(LiangBarsky(verticeSup[0],linea[0],linea[1],linea[2],linea[3],True))
-    print(LiangBarsky(verticeInf[1],linea[0],linea[1],linea[2],linea[3],False))
-    print(LiangBarsky(verticeSup[1],linea[0],linea[1],linea[2],linea[3],False))
+    print(LiangBarsky(verticeInf[0],linea,True))
+    print(LiangBarsky(verticeSup[0],linea,True))
+    print(LiangBarsky(verticeInf[1],linea,False))
+    print(LiangBarsky(verticeSup[1],linea,False))
 
     
