@@ -14,6 +14,7 @@ vertices[1] = pyInf
 vertices[2] = pxSup
 vertices[3] = pySup
 '''
+import sys
 
 def LiangBarsky(pRef, vertices, modo):
     u = 0
@@ -108,7 +109,13 @@ print("Vertice inferior izquierdo: ", verticeInf)
 print("Vertice superior derecho: ", verticeSup)
 
 # Abriendo el archivo en modo lectura
-archivo = open("lineas.txt", "r")
+try:
+    archivo = open("lineas.txt", "r")
+#Si no se puede abrir terminamos ejecución
+except:
+    print("\n***No se ha podido abrir el archivo 'lineas.txt'***")
+    sys.exit(1)
+
 archivo_leido = archivo.read().split("\n")
 archivo.close()
 
