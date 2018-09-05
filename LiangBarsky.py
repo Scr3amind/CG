@@ -73,7 +73,7 @@ verticeSup = []
 while True:
     try:
         verticeInf = input(
-            "Introduce las coordenadas del vertice inferior izquierdo: ").split(",")
+            "Introduce las coordenadas del vertice inferior izquierdo separado por comas: ").split(",")
         verticeInf = list(map(int, verticeInf))
 
         if(len(verticeInf) != 2):
